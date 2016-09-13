@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BikDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self"
+              xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
+              xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bilgiler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ePosta" Type="nvarchar" MaxLength="50" />
+          <Property Name="altEposta" Type="nvarchar" MaxLength="50" />
+          <Property Name="mailGonderilsinmi" Type="bit" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="dosyaYolu" Type="nvarchar" MaxLength="50" />
+          <Property Name="gonderen" Type="nvarchar" MaxLength="50" />
+          <Property Name="gonderenSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="dosyaYoluTeam" Type="nvarchar" MaxLength="50" />
+          <Property Name="zaman" Type="nvarchar" MaxLength="50" />
+          <Property Name="sirketAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="gorunum">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="renk" Type="nvarchar(max)" />
+          <Property Name="font" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="BikDBModelStoreContainer">
+          <EntitySet Name="bilgiler" EntityType="Self.bilgiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gorunum" EntityType="Self.gorunum" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BikDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false"
+              xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+              xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="bilgiler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ePosta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="altEposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mailGonderilsinmi" Type="Boolean" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dosyaYolu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gonderen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gonderenSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dosyaYoluTeam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zaman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sirketAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="BikDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bilgiler" EntityType="Self.bilgiler" />
+          <EntitySet Name="gorunum" EntityType="BikDBModel.gorunum" />
+        </EntityContainer>
+        <EntityType Name="gorunum">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="renk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="font" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BikDBModelStoreContainer" CdmEntityContainer="BikDBEntities">
+          <EntitySetMapping Name="bilgiler">
+            <EntityTypeMapping TypeName="BikDBModel.bilgiler">
+              <MappingFragment StoreEntitySet="bilgiler">
+                <ScalarProperty Name="sirketAdi" ColumnName="sirketAdi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kAdi" ColumnName="kAdi" />
+                <ScalarProperty Name="ePosta" ColumnName="ePosta" />
+                <ScalarProperty Name="altEposta" ColumnName="altEposta" />
+                <ScalarProperty Name="mailGonderilsinmi" ColumnName="mailGonderilsinmi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="dosyaYolu" ColumnName="dosyaYolu" />
+                <ScalarProperty Name="gonderen" ColumnName="gonderen" />
+                <ScalarProperty Name="gonderenSifre" ColumnName="gonderenSifre" />
+                <ScalarProperty Name="dosyaYoluTeam" ColumnName="dosyaYoluTeam" />
+                <ScalarProperty Name="zaman" ColumnName="zaman" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gorunum">
+            <EntityTypeMapping TypeName="BikDBModel.gorunum">
+              <MappingFragment StoreEntitySet="gorunum">
+                <ScalarProperty Name="font" ColumnName="font" />
+                <ScalarProperty Name="renk" ColumnName="renk" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
