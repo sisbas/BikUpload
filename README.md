@@ -1,8 +1,9 @@
 # BikUpload
 Basın İlan Kurumu için Geliştirilmiştir
 
-gazete.bik.gov.tr adlı siteye belli bir klasördeki pdf dosyası upload eder.
 
-Gerekli konfigürasyonlar Ayarlar menüsü ile yapılabilir.
+*gazete.bik.gov.tr adlı siteye belli bir klasördeki pdf dosyasını upload eder.
 
-Mail yoluyla bilgilendirme gerçekleştirilir.
+*Gerekli konfigürasyonlar Ayarlar menüsü ile yapılabilir.
+
+*Mail yoluyla bilgilendirme gerçekleştirilir.
