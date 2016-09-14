@@ -27,6 +27,7 @@ namespace BikBot
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             if (bik.NetKontrol())
             {
                 browser.Navigate(bik.LinkYukle("http://gazete.bik.gov.tr/")); //linke git
@@ -127,16 +128,11 @@ namespace BikBot
 
                 await Task.Delay(200000);
 
-                var elements = browser.Document?.GetElementsByTagName("span");
 
-                if (bik.TarihKontrol(elements[4].InnerHtml.Substring(0, 2)))
-                {
-                    if (browser.Document != null) browser.Document.GetElementById("kaydet")?.InvokeMember("Click");
-                }
-
+                if (browser.Document != null) browser.Document.GetElementById("kaydet")?.InvokeMember("Click");
                 await Task.Delay(100);
-
-                if ((bool) BikModelEntities.bilgiler.FirstOrDefault(i => i.id == 1)?.mailGonderilsinmi)
+                if (browser.Document != null) browser.Document.GetElementById("kaydet")?.InvokeMember("Click");
+                if ((bool)BikModelEntities.bilgiler.FirstOrDefault(i => i.id == 1)?.mailGonderilsinmi)
                 {
                     var firstOrDefault = BikModelEntities.bilgiler.FirstOrDefault();
                     if (firstOrDefault != null || firstOrDefault.mailGonderilsinmi != null ||
@@ -147,6 +143,12 @@ namespace BikBot
                         Mail1.MailGonder(epostaBilgi);
                         Mail1.MailGonder(altEpostaBilgi);
                     }
+                }
+
+                var elements = browser.Document?.GetElementsByTagName("span");
+                if (!bik.TarihKontrol(elements[4].InnerHtml.Substring(0, 2)))
+                {
+                    MessageBox.Show("LÜTFEN TARİHİ KONTROL EDİNİZ");
                 }
             }
             catch (Exception exception)

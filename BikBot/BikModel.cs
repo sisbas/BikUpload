@@ -104,9 +104,6 @@ namespace BikBot
             if (tagTarih != yarin.ToString().Substring(0, 2))
             {
                 hataMail.MailGonder("TARİH UYUŞMUYOR LÜTFEN KONTROL EDİNİZ");
-                Process.Start(BikModelEntities.bilgiler.FirstOrDefaultAsync(i => i.id == 1).Result.dosyaYoluTeam);
-                MessageBox.Show("Tarih Uyuşmuyor. Lütfen iletişime geçiniz!", "TARİH HATASI", MessageBoxButtons.OK,
-                    MessageBoxIcon.Stop);
                 return false;
             }
             Tarih = DateTime.Today.AddDays(1).ToString().Substring(0, 10);
